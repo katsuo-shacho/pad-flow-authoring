@@ -1,0 +1,68 @@
+# 公式 How-to 索引（第2層・手順）
+
+出典: https://learn.microsoft.com/ja-jp/power-automate/desktop-flows/how-to/<slug>  （CC BY 4.0）
+各記事は数百語。必要な1本だけ WebFetch で読む。URLの ja-jp を en-us に替えると英語版。
+
+- access-elements-depend-window: Access elements that depend on how the window appears on the screen
+- add-images-email-messages: Add images to email messages
+- allowlist-tenant-for-connect-with-sign-in-and-registration: Allow list tenants for registration and connect with sign-in connections — Learn how to allow list tenant IDs to allow connect with sign-in connections and registration on AD-joined machines.
+- autofit-excel-columns-vbscript: Autofit Excel columns using VBScript
+- automate-applications-keyboard-shortcuts: Automate applications using keyboard shortcuts
+- automate-browser-prompts: Automate browser prompts
+- automate-emails-accounts-two-step-verification: Automate email accounts with two-step verification
+- automate-using-mouse-keyboard-ocr: Automate using mouse & keyboard and OCR actions (recommended for automation in VDI)
+- check-if-variable-numeric: Check if a variable is numeric
+- click-elements-list-links: Click all the elements in a list of links
+- close-window-process-id: Close any window through its process ID
+- configure-connection-strings-for-db-actions: Configure connection strings for database related actions — Learn how to configure and test connection strings for various databases in Power Automate for desktop.
+- convert-base64-hexadecimal-format: Convert Base64 text to hexadecimal format
+- convert-csv-excel: Convert a CSV file into an Excel spreadsheet
+- convert-data-powershell: Convert data using PowerShell
+- convert-excel-pdf-vbscript: Convert Excel to PDF using VBScript
+- convert-text-datetime: Convert a text value to datetime
+- delete-column-datatable: Delete columns from a datatable
+- delete-desktop-flow-run-history: Delete desktop flow run history data — Delete desktop flow run history data using bulk-delete feature of Microsoft Dataverse
+- ensure-windows-become-focused: Ensure that application windows become focused
+- extract-attributes-window-elements: Extract attributes from window elements
+- extract-data-from-word-table: Extract data from a Word table — Learn how to extract table data in Word documents by converting them to PDF format and using PDF extraction actions in Power Automate for desktop.
+- extract-text-word-document: Extract text from a Word document using VBScript
+- get-coordinates-size-web-element: Get the coordinates and size of a web element
+- get-position-size-window: Get the position and size of a window
+- handle-custom-forms: Handle custom forms
+- handle-iframes: Handle iframes on a web page
+- handle-issues-when-using-remote-desktop-applications: Using Power Automate for desktop with remote desktop applications — Provides a resolution for the issues that Power Automate for desktop faces when using remote desktop applications.
+- identify-window-handle: Identify a window by its handle
+- image-recognition-screen-resolution: Use image recognition on machines with different screen resolutions
+- java: Automate Java applications
+- links-open-new-tabs: Handle links that open new tabs
+- logical-operations-conditional-statements: Use logical operations on conditional statements
+- ocr-multilingual-documents: Perform OCR on multilingual documents
+- outlook-shared-mailbox: Use a shared Outlook mailbox in email automations — Use a shared Outlook mailbox in email automations.
+- passing-datatable: Pass a datatable from a cloud flow to a desktop flow
+- populate-text-fields-click-links-javascript: Populate text fields and click on links using JavaScript
+- print-images: Print images
+- proxy-settings: Configure Power Automate for desktop proxy settings — Configure the proxy settings of Power Automate for desktop to enable PAD components to access the Microsoft cloud services.
+- reduce-flow-size: Reduce the size of desktop flows in a solution — Learn how to reduce the size of desktop flows in a solution by removing UI element screenshots.
+- restore-deleted-desktop-flow: Restore a deleted desktop flow — Learn how to restore a deleted desktop flow.
+- retrieve-details-web-page: Retrieve details from a web page
+- run-desktop-flow-action: Run desktop flow from other desktop flows
+- run-macros-excel: Run macros on an Excel workbook
+- run-power-automate-elevated-rights: Run Power Automate with elevated rights — See how to run Power Automate with elevated rights.s
+- run-troubleshooter-unattended: Run the Power Automate Desktop troubleshooter in unattended mode — Learn how to run the Power Automate Desktop troubleshooter from a desktop flow when an unattended run fails; capture a screenshot of the troubleshooter output for diagnostics.
+- sap-gui-scripting-configuration: Configure SAP GUI scripting for Power Automate for desktop — How to enable and verify SAP GUI scripting so Power Automate for desktop can automate SAP dialogs. Includes steps for RZ11, RZ10, and using the PAD troubleshooter.
+- scroll-web-page: Scroll on a web page
+- send-physical-clicks-web-element: Send physical clicks on a web element
+- set-runowner-desktopflowconnection: Set a run owner on a desktop flow connection — Learn how to set a run owner on a desktop flow connection using a service principal identity in Power Automate.
+- set-screen-resolution-unattended-mode: Set screen resolution on unattended mode
+- share-desktop-flows-that-contain-connector-actions: Share desktop flows that contain connector actions — Learn how to share desktop flows that contain connector actions.
+- share-export-desktop-flows: Share/export a desktop flow
+- sql-queries-excel: Run SQL queries on Excel files
+- sql-queries-microsoft-access: Run SQL queries to Microsoft Access
+- terminal-emulation-open-new-session: How to configure the open terminal session action — Learn to configure the open terminal session action in Power Automate for desktop. Set up terminal sessions with Micro Focus Reflection and HLLAPI.
+- troubleshoot-sql-queries: Troubleshoot SQL queries
+- troubleshoot-unattended-execution-failures: Troubleshoot unattended desktop flow execution failures — Learn how to diagnose and resolve common problems when running Power Automate desktop flows in unattended mode.
+- ui-automation-change-timeout-configuration: Change the timeout configuration for the UI/Browser automation — Change the timeout configuration for the UI and Browser automation actions.
+- unhide-excel-worksheets-vbscript: Unhide worksheets in Excel using VBScript
+- update_power_automate: Update or roll back Power Automate for desktop — Learn how to update or roll back Power Automate for desktop and the machine runtime app. Address compatibility issues and manage updates seamlessly.
+- use-connector-actions: Use connector actions — Learn how to use connector actions in desktop flows.
+- use-passwords: Use passwords — Learn how to use passwords in desktop flow actions.

@@ -1,0 +1,43 @@
+# csv-to-excel/Main  PAD 2.73  Classic  2026-10-25
+# TODO: SourceFolder, OutputFile を実際のパスに
+# TODO: 本番では DebugMode を False のままにする（検証時は True で利用者ダイアログを飛ばす）
+SET DebugMode TO False
+SET SourceFolder TO $'''C:\Work\csv-in'''
+SET OutputFile TO $'''C:\Work\out\combined.xlsx'''
+SET DoneFolder TO $'''C:\Work\csv-done'''
+SET FailedCount TO 0
+Folder.GetFiles Folder: SourceFolder FileFilter: $'''*.csv''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.Name SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
+IF Files.Count = 0 THEN
+    Logging.LogMessage Message: $'''対象 CSV なし: %SourceFolder%''' LogLevel: Logging.LogLevel.InfoLevel
+    EXIT Code: 0
+END
+IF (Folder.IfFolderExists.DoesNotExist Path: DoneFolder) THEN
+    Folder.Create FolderPath: $'''C:\Work''' FolderName: $'''csv-done''' Folder=> NewFolder
+END
+SET Idx TO 0
+LOOP FOREACH CurrentFile IN Files
+    SET ReadOk TO True
+    File.ReadFromCSVFile.ReadCSV CSVFile: CurrentFile Encoding: File.CSVEncoding.UTF8 TrimFields: True FirstLineContainsColumnNames: True ColumnsSeparator: File.CSVColumnsSeparator.SystemDefault CSVTable=> CSVTable
+    ON ERROR REPEAT 2 TIMES WAIT 2
+    ON ERROR
+        SET ReadOk TO False
+        SET FailedCount TO FailedCount + 1
+    END
+    IF ReadOk = True THEN
+        IF Idx = 0 THEN
+            SET Combined TO CSVTable
+        ELSE
+            Variables.MergeDataTables FirstDataTable: Combined SecondDataTable: CSVTable MergeMode: Variables.MergeMode.AddExtraColumns
+        END
+        SET Idx TO Idx + 1
+    END
+END
+Excel.LaunchExcel.Launch UseMachineLocale: False Visible: False LoadAddInsAndMacros: False Instance=> ExcelInstance
+Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Combined Column: $'''A''' Row: 1
+Excel.CloseExcel.CloseAndSaveAs Instance: ExcelInstance XmlMapName: $'''''' DocumentPath: OutputFile DocumentFormat: Excel.ExcelFormat.FromExtension
+File.Move Files: Files Destination: DoneFolder IfFileExists: File.IfExists.Overwrite MovedFiles=> MovedFiles
+Logging.LogMessage Message: $'''完了: %Idx% 件結合, 失敗 %FailedCount% 件 → %OutputFile%''' LogLevel: Logging.LogLevel.InfoLevel
+IF DebugMode = False THEN
+    Display.ShowMessageDialog.ShowMessage Icon: Display.Icon.Information Buttons: Display.Buttons.OK DefaultButton: Display.DefaultButton.Button1 IsTopMost: True Message: $'''%Idx% 件の CSV を結合しました（失敗 %FailedCount% 件）。
+出力: %OutputFile%''' Title: $'''CSV 結合''' ButtonPressed=> ButtonPressed
+END

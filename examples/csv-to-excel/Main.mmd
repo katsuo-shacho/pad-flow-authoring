@@ -1,0 +1,87 @@
+flowchart TD
+  n1(["開始"])
+  n2["SET DebugMode TO False"]
+  n3["SET SourceFolder TO “C:\Work\csv-in”"]
+  n4["SET OutputFile TO “C:\Work\out\combin…”"]
+  n5["SET DoneFolder TO “C:\Work\csv-done”"]
+  n6["SET FailedCount TO 0"]
+  n7["Folder: Folder.Get Files (SourceFolder) → Files"]
+  n8{"条件: Files.Count = 0"}
+  n9["Logging: Logging.Log Message (“対象)"]
+  n10(["EXIT Code: 0"])
+  n11{"条件: (Folder.IfFolderExists.DoesNotExist Path: DoneFolder)"}
+  n12["Folder: Folder.Create → NewFolder"]
+  n13["SET Idx TO 0"]
+  n14[["ループ: FOREACH CurrentFile IN Files"]]
+  n15["SET ReadOk TO True"]
+  n16["File: Read CSV → CSVTable"]
+  n17>"ON ERROR REPEAT 2 TIMES WAIT 2"]
+  n18>"ON ERROR"]
+  n19["SET ReadOk TO False"]
+  n20["SET FailedCount TO FailedCount + 1"]
+  n21{"条件: ReadOk = True"}
+  n22{"条件: Idx = 0"}
+  n23["SET Combined TO CSVTable"]
+  n24["Variables: Variables.Merge Data Tables"]
+  n25["SET Idx TO Idx + 1"]
+  n26["Excel: Launch → ExcelInstance"]
+  n27["Excel: Write Cell (ExcelInstance)"]
+  n28["Excel: Close And Save As (ExcelInstance)"]
+  n29["File: File.Move → MovedFiles"]
+  n30["Logging: Logging.Log Message (“完了:)"]
+  n31{"条件: DebugMode = False"}
+  n32["出力:: 出力: (“CSV) → ButtonPressed"]
+  n33(["終了"])
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
+  n5 --> n6
+  n6 --> n7
+  n7 --> n8
+  n8 -->|はい| n9
+  n9 --> n10
+  n8 --> n11
+  n11 -->|はい| n12
+  n12 --> n13
+  n11 --> n13
+  n13 --> n14
+  n14 -->|各要素| n15
+  n15 --> n16
+  n16 -.->|エラー| n17
+  n16 -.->|エラー| n18
+  n18 --> n19
+  n19 --> n20
+  n16 --> n21
+  n20 --> n21
+  n21 --> n22
+  n22 -->|はい| n23
+  n22 -->|いいえ| n24
+  n23 --> n25
+  n24 --> n25
+  n25 -->|次へ| n14
+  n21 -->|次へ| n14
+  n14 --> n26
+  n26 --> n27
+  n27 --> n28
+  n28 --> n29
+  n29 --> n30
+  n30 --> n31
+  n31 -->|はい| n32
+  n32 --> n33
+  n31 --> n33
+  classDef dec fill:#fff4d6,stroke:#b8860b;
+  classDef err fill:#fde8e8,stroke:#c0392b;
+  classDef loop fill:#e8f0fe,stroke:#2b5fd9;
+  classDef term fill:#eef7ee,stroke:#2e7d32;
+  class n1 term;
+  class n8 dec;
+  class n10 term;
+  class n11 dec;
+  class n14 loop;
+  class n17 err;
+  class n18 err;
+  class n21 dec;
+  class n22 dec;
+  class n31 dec;
+  class n33 term;

@@ -1,0 +1,91 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Flow chart</title>
+<style>body{font-family:system-ui,sans-serif;margin:16px} .mermaid{max-width:100%}</style></head><body>
+<h3>Main.robin</h3><pre class="mermaid">flowchart TD
+  n1([&quot;開始&quot;])
+  n2[&quot;SET DebugMode TO False&quot;]
+  n3[&quot;SET SourceFolder TO “C:\Work\csv-in”&quot;]
+  n4[&quot;SET OutputFile TO “C:\Work\out\combin…”&quot;]
+  n5[&quot;SET DoneFolder TO “C:\Work\csv-done”&quot;]
+  n6[&quot;SET FailedCount TO 0&quot;]
+  n7[&quot;Folder: Folder.Get Files (SourceFolder) → Files&quot;]
+  n8{&quot;条件: Files.Count = 0&quot;}
+  n9[&quot;Logging: Logging.Log Message (“対象)&quot;]
+  n10([&quot;EXIT Code: 0&quot;])
+  n11{&quot;条件: (Folder.IfFolderExists.DoesNotExist Path: DoneFolder)&quot;}
+  n12[&quot;Folder: Folder.Create → NewFolder&quot;]
+  n13[&quot;SET Idx TO 0&quot;]
+  n14[[&quot;ループ: FOREACH CurrentFile IN Files&quot;]]
+  n15[&quot;SET ReadOk TO True&quot;]
+  n16[&quot;File: Read CSV → CSVTable&quot;]
+  n17&gt;&quot;ON ERROR REPEAT 2 TIMES WAIT 2&quot;]
+  n18&gt;&quot;ON ERROR&quot;]
+  n19[&quot;SET ReadOk TO False&quot;]
+  n20[&quot;SET FailedCount TO FailedCount + 1&quot;]
+  n21{&quot;条件: ReadOk = True&quot;}
+  n22{&quot;条件: Idx = 0&quot;}
+  n23[&quot;SET Combined TO CSVTable&quot;]
+  n24[&quot;Variables: Variables.Merge Data Tables&quot;]
+  n25[&quot;SET Idx TO Idx + 1&quot;]
+  n26[&quot;Excel: Launch → ExcelInstance&quot;]
+  n27[&quot;Excel: Write Cell (ExcelInstance)&quot;]
+  n28[&quot;Excel: Close And Save As (ExcelInstance)&quot;]
+  n29[&quot;File: File.Move → MovedFiles&quot;]
+  n30[&quot;Logging: Logging.Log Message (“完了:)&quot;]
+  n31{&quot;条件: DebugMode = False&quot;}
+  n32[&quot;出力:: 出力: (“CSV) → ButtonPressed&quot;]
+  n33([&quot;終了&quot;])
+  n1 --&gt; n2
+  n2 --&gt; n3
+  n3 --&gt; n4
+  n4 --&gt; n5
+  n5 --&gt; n6
+  n6 --&gt; n7
+  n7 --&gt; n8
+  n8 --&gt;|はい| n9
+  n9 --&gt; n10
+  n8 --&gt; n11
+  n11 --&gt;|はい| n12
+  n12 --&gt; n13
+  n11 --&gt; n13
+  n13 --&gt; n14
+  n14 --&gt;|各要素| n15
+  n15 --&gt; n16
+  n16 -.-&gt;|エラー| n17
+  n16 -.-&gt;|エラー| n18
+  n18 --&gt; n19
+  n19 --&gt; n20
+  n16 --&gt; n21
+  n20 --&gt; n21
+  n21 --&gt; n22
+  n22 --&gt;|はい| n23
+  n22 --&gt;|いいえ| n24
+  n23 --&gt; n25
+  n24 --&gt; n25
+  n25 --&gt;|次へ| n14
+  n21 --&gt;|次へ| n14
+  n14 --&gt; n26
+  n26 --&gt; n27
+  n27 --&gt; n28
+  n28 --&gt; n29
+  n29 --&gt; n30
+  n30 --&gt; n31
+  n31 --&gt;|はい| n32
+  n32 --&gt; n33
+  n31 --&gt; n33
+  classDef dec fill:#fff4d6,stroke:#b8860b;
+  classDef err fill:#fde8e8,stroke:#c0392b;
+  classDef loop fill:#e8f0fe,stroke:#2b5fd9;
+  classDef term fill:#eef7ee,stroke:#2e7d32;
+  class n1 term;
+  class n8 dec;
+  class n10 term;
+  class n11 dec;
+  class n14 loop;
+  class n17 err;
+  class n18 err;
+  class n21 dec;
+  class n22 dec;
+  class n31 dec;
+  class n33 term;</pre>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true, flowchart:{curve:'basis'}});</script></body></html>
