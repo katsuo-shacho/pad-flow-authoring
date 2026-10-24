@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 work/
 *.zip
+_push_once.cmd
