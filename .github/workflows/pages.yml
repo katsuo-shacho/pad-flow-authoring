@@ -1,0 +1,31 @@
+# knowledge/ と prompts/ をそのまま GitHub Pages に公開する（辞書を URL で引けるようにする）
+# 有効化: リポジトリ Settings → Pages → Source を "GitHub Actions" にする（1回だけ）
+name: publish-dictionary
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build site (raw files + index)
+        run: |
+          mkdir -p site
+          cp -r knowledge prompts workflow SKILL.md README.md LICENSE LEGAL.md THIRD_PARTY_NOTICES.md site/
+          touch site/.nojekyll
+          python3 scripts/build_site_index.py site
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: { name: github-pages }
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

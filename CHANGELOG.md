@@ -3,6 +3,7 @@
 ## 0.1.1 — 2026-10-29
 - knowledge: patterns-config-object.md（環境依存の値を REGION 00/01/02 のカスタムオブジェクトに集約。本番では 00 の JSON だけ書き換える）。patterns-download-pipeline.md に自前検証からの一般則を追記（fetch/click の2方式、ログイン判定、data-* に頼らないサイト適合、VBScript を土台にしない、貼付で実際に起きた失敗 等）。
 - workflow: 02-design / 03-principles に設定集約の規則、06-autonomous-loop に本番への引き渡し手順。
+- GitHub Pages: knowledge/ と prompts/ をそのまま公開する workflow（.github/workflows/pages.yml）と、index.json / robin-ids.json を作る scripts/build_site_index.py。目次のある Web サイトとして辞書を URL で引ける。
 - README: 環境別の導入手順、有効化の3問チェック、開発→本番の持っていき方。
 
 ## 0.1.0 — 2026-10-25
