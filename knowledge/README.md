@@ -10,7 +10,7 @@
 | 4 仕様 | 引数は何を意味し既定値は何か | actions/<group>.md | 公式 actions-reference 要約 |
 | 5 やり方 | 公式はどう勧めているか | howto-index.md / official-guides.md（→ 1本だけ WebFetch） | 公式 how-to・方法論 |
 | 6 貼付の構造 | コピーした文字列には何が入っているか、版・Classic/Power Fx・埋込スクリプトの互換性 | paste-format.md | 公開フローの観察 ＋ 公式注記 |
-| 7 実例・定石 | 実運用ではどう組まれているか | snippets/index.md → snippets/<category>.md、patterns-*.md（files-and-input / download-pipeline …）、robin-syntax.md | 公開フロー（ライセンス明示分のみ本文） |
+| 7 実例・定石 | 実運用ではどう組まれているか | snippets/index.md → snippets/<category>.md、patterns-*.md（config-object / download-pipeline / files-and-input …）、robin-syntax.md | 公開フロー（ライセンス明示分のみ本文） |
 
 - 1 は自分で育てる層（memo 行は再生成でも保持）。2〜5 は scripts/ で元データから再生成する。6〜7 は観察で増やす。
 - どの層も「製品の挙動の記録」であり Microsoft の見解ではない（../LEGAL.md）。

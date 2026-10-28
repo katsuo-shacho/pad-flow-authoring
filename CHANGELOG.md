@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 — 2026-10-29
+- knowledge: patterns-config-object.md（環境依存の値を REGION 00/01/02 のカスタムオブジェクトに集約。本番では 00 の JSON だけ書き換える）。patterns-download-pipeline.md に自前検証からの一般則を追記（fetch/click の2方式、ログイン判定、data-* に頼らないサイト適合、VBScript を土台にしない、貼付で実際に起きた失敗 等）。
+- workflow: 02-design / 03-principles に設定集約の規則、06-autonomous-loop に本番への引き渡し手順。
+- README: 環境別の導入手順、有効化の3問チェック、開発→本番の持っていき方。
+
 ## 0.1.0 — 2026-10-25
 - 初版（実験的）。三層構造: knowledge（辞書）/ workflow（00-06）/ scripts（引き出し）/ prompts（モード別キックオフ）。
 - knowledge: 公式アクション群 52 群 460 項目の要約カタログ、Robin ID 1,086 件（Classic / Power Fx）、構文規則（全文・圧縮版）、公式 how-to 64 本の索引、貼付テキストの構造、公開実例。
