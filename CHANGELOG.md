@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.2 — 2026-10-29
+- scripts/make_portable.py: OneDrive／ローカルに置いて辞書的に参照するポータブル版 zip（START_HERE.md 入り）。README の導入表に追加。
+
 ## 0.1.1 — 2026-10-29
 - knowledge: patterns-config-object.md（環境依存の値を REGION 00/01/02 のカスタムオブジェクトに集約。本番では 00 の JSON だけ書き換える）。patterns-download-pipeline.md に自前検証からの一般則を追記（fetch/click の2方式、ログイン判定、data-* に頼らないサイト適合、VBScript を土台にしない、貼付で実際に起きた失敗 等）。
 - workflow: 02-design / 03-principles に設定集約の規則、06-autonomous-loop に本番への引き渡し手順。

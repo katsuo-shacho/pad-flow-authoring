@@ -1,6 +1,6 @@
 # pad-flow-authoring
 
-**v0.1.1 (experimental)** — A Claude skill (also usable as a prompt pack for any chat assistant) for building Power Automate Desktop flows systematically:
+**v0.1.2 (experimental)** — A Claude skill (also usable as a prompt pack for any chat assistant) for building Power Automate Desktop flows systematically:
 plan → design → look up a paste-validated Robin dictionary (1,086 action IDs, Classic and Power Fx) → compose → self-check against the paste rules → verify → improve.
 The knowledge layer is an **unofficial description of the product's observed behaviour** (see LEGAL.md), built on Microsoft's CC BY 4.0 documentation and Joe Green's CC BY 4.0 PAD Robin Action Knowledge Base. Not affiliated with Microsoft. Repository: https://github.com/katsuo-shacho/pad-flow-authoring
 Japanese documentation below; English README to follow.
@@ -17,6 +17,7 @@ Claude 用スキル。Power Automate Desktop（PAD）のフロー作成・改修
 | **Claude（claude.ai / デスクトップ）** | リポジトリを ZIP でダウンロード → 設定のスキルで「スキルをアップロード」→ ZIP を選ぶ → トグル ON | 「PAD のフローを作りたい」と言うと、最初に「対話で進めますか、いきなり作りますか」と聞いてくる |
 | **Claude Code（PC 上のエージェント）** | `git clone https://github.com/katsuo-shacho/pad-flow-authoring ~/.claude/skills/pad-flow-authoring`（プロジェクト限定なら `<repo>/.claude/skills/`） | `/pad-flow-authoring` が補完に出る。`python3 scripts/robin_lint.py` が動く |
 | **Microsoft 365 Copilot・ツール無しチャット** | `python3 scripts/make_prompt_pack.py --families <必要な家族>` で作ったテキストを会話の先頭に貼る（自宅で作って OneDrive に置いておく）。または `knowledge/` を OneDrive/SharePoint に展開して "/" でファイル参照 | 返答の先頭に「対話で進めますか、いきなり作りますか」が出る。Robin の前に「GATE: PASS 8/8」の判定表が付く |
+| **ポータブル版（OneDrive／ローカル、外部を読まない）** | `python3 scripts/make_portable.py` で zip を作り（約 480KB、展開 2.6MB）、OneDrive かローカルに展開。AI には `START_HERE.md` のとおり `prompts/chat-kickoff.md` と `knowledge/robin-rules-compact.md` を毎回参照させ、必要な `knowledge/robin/<module>.md` を足す。M365 Copilot では "/" でファイル指定 | 返答に「GATE: PASS 8/8」が付く |
 | **目次のある Web サイト（GitHub Pages）** | リポジトリ Settings → Pages → Source を「GitHub Actions」にする（1回）。以後 push のたびに `https://<user>.github.io/pad-flow-authoring/` に辞書が公開される。会社のチャットには「この URL の knowledge/robin-rules-compact.md と knowledge/robin/excel.md を読んで」と URL で渡す。機械向けに `index.json`・`robin-ids.json`（Robin ID → ファイル） | 返答に「GATE: PASS 8/8」が付く |
 | **Copilot Studio（社内で共有）** | 宣言型エージェントの知識源に `knowledge/` フォルダーを登録し、指示に `prompts/chat-kickoff.md` を貼る | 同上 |
 | **他の AI（Codex / ChatGPT 等）** | `SKILL.md` と `knowledge/robin-rules-compact.md` を最初に読ませ、必要な `knowledge/robin/<module>.md` を都度渡す | 同上 |
