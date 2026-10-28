@@ -1,6 +1,7 @@
 # Changelog
 
 ## 0.1.2 — 2026-10-29
+- .github/workflows/release.yml: タグ push で portable zip を Release に添付（releases/latest/download の固定 URL）。
 - scripts/make_portable.py: OneDrive／ローカルに置いて辞書的に参照するポータブル版 zip（START_HERE.md 入り）。README の導入表に追加。
 
 ## 0.1.1 — 2026-10-29
