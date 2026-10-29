@@ -11,13 +11,14 @@ description: Power Automate Desktop（PAD）のフローを、計画→設計→
 
 ## 構成
 - `knowledge/` 辞書。公式群カタログ（catalog.md、自分の memo 行つき）→ Robin ID 辞書（robin-index.md → robin/<module>.md、Power Fx は robin-powerfx/）→ 構文規則（robin-rules.md）→ 公式仕様・how-to・方法論の索引（actions/、howto-index.md、official-guides.md）→ 貼付テキストの構造と互換性（paste-format.md）→ 公開フローの実例と定石（snippets/、patterns-*.md）。
-- `workflow/` 進め方。00-modes（対話／自走／プロンプトだけ の使い分けと承認ゲート）、01-plan（要件・見積もり・GO）、02-design（アルゴリズム設計）、03-principles（開発原則）、04-environments（AI 内で完結する層／Copilot だけ／エージェント）、05-verify（デバッグ入口・本番入口・テスト）、06-autonomous-loop（無人で回す）。
+- `workflow/` 進め方。既存フローの改善は 07-improve、動かないときは 08-debug から入る。00-modes（対話／自走／プロンプトだけ の使い分けと承認ゲート）、01-plan（要件・見積もり・GO）、02-design（アルゴリズム設計）、03-principles（開発原則）、04-environments（AI 内で完結する層／Copilot だけ／エージェント）、05-verify（デバッグ入口・本番入口・テスト）、06-autonomous-loop（無人で回す）、07-improve（速度／精度の改善）、08-debug（原因の特定）。
 - `prompts/` モード別キックオフ（chat / interactive / agent）と、チャットでフックを再現する手順（chat-lookup-protocol）。
 - `examples/` 01→05 を通した見本（csv-to-excel）。書式に迷ったらこれを真似る。
 - `scripts/` 引き出し。robin_lint.py（貼付前検査＋静的レビュー）、robin_to_mermaid.py（フローチャート）、analyze_timing.py（時間解析）、make_prompt_pack.py（Copilot 用の貼付パック）、build_catalog.py / build_robin.py（辞書の再生成）。
 
 ## 手順
 
+0. **入口** 新規なら 1 へ。既存フローの改善依頼（速くしたい・壊れにくくしたい）は workflow/07-improve.md、動かない・たまに失敗するは workflow/08-debug.md から。
 0. **モード** workflow/00-modes.md。環境から Chat／Interactive／Autonomous を決め、prompts/<mode>-kickoff.md の最初の質問（対話で進めるか、いきなり作るか）を1回だけする。
 1. **計画** workflow/01-plan.md。要件カードを埋め、方針・見積もり・検証方法を1枚にして GO を取る。末尾で「PAD でなくてよいのでは」を1回だけ判定し、Excel マクロ／VBScript／ブックマークレットが明確に向くときだけ「技術選定メモ」を短く添える（手段・何がどう楽になるか・前提、3文まで。Python／.NET は「もしインストールできるなら」の条件付きで弱く）。実装中には出さない。主導権は開発者。返事が無ければ PAD 版を進め、本線を脱線させない。既存フローがあれば現行コード（手編集含む）を退避し、戻し先を確保する。
 2. **設計** workflow/02-design.md。データの流れを先に決め、一括化・ループ削減・ループ内ブロック削減・再試行・チェックポイントを明記。必要なら Mermaid で分岐と繰返しだけ描く。利用者に1回確認。

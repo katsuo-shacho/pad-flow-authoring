@@ -22,7 +22,8 @@
 ## 設計・品質
 - static-analysis: Flow Checker 静的解析ルール（→ 03-principles.md に要約済み） 2.1k語
 - test-desktop-flows + actions-reference/testing: テストケース（v2.54+、Premium）。「Test a desktop flow」+「Assert」 0.7k語
-- debugging-flow: ブレークポイント、ステップ実行、「ここから実行」 1.0k語
+- debugging-flow: ブレークポイント、ステップ実行、「ここから実行」、実行遅延 1.0k語（要約: knowledge/debug-facts.md）
+- monitor-run-details: 実行の詳細（アクションごとの開始・所要・状態、progressive logging は V2＋v2.52）
 - version-control: バージョン管理（プレビュー、ドラフト/公開/復元） 1.1k語
 - designer-workspace / flow-designer: デザイナー構成、サブフロー、アクションのコピー＆貼付（テキストとして共有可）
 

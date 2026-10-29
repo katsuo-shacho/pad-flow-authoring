@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1 — 2026-10-29
+- workflow: 07-improve（既存フローの速度／精度改善の入口）、08-debug（症状の分類・再現の最小化・情報の集め方・原因の言い方）。
+- knowledge: debug-facts.md（デザイナーのデバッグ機能、エラーの種類と見方、エラー処理の選択肢、実行ログの場所、安全停止。公式要約＋観察）。
+- SKILL.md: 入口の振り分け（新規／改善／デバッグ）。
+
 ## 0.2.0 — 2026-10-29
 - knowledge: patterns-browser-fetch.md（現行の取得定石: ページ内 fetch → base64 → PowerShell 保存、window 台帳、JSON 受け渡し、実時間の待ち、状態判定、最終照合）と silent-kills.md（無言拒否・貼付失敗の実例と検査手順）を新設。patterns-download-pipeline.md を「旧方式」と明記。SKILL.md に書くときの決まり2行。
 
