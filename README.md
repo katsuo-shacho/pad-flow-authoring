@@ -1,6 +1,6 @@
 # pad-flow-authoring
 
-**v0.1.2 (experimental)** — A Claude skill (also usable as a prompt pack for any chat assistant) for building Power Automate Desktop flows systematically:
+**v0.2.0 (experimental)** — A Claude skill (also usable as a prompt pack for any chat assistant) for building Power Automate Desktop flows systematically:
 plan → design → look up a paste-validated Robin dictionary (1,086 action IDs, Classic and Power Fx) → compose → self-check against the paste rules → verify → improve.
 The knowledge layer is an **unofficial description of the product's observed behaviour** (see LEGAL.md), built on Microsoft's CC BY 4.0 documentation and Joe Green's CC BY 4.0 PAD Robin Action Knowledge Base. Not affiliated with Microsoft. Repository: https://github.com/katsuo-shacho/pad-flow-authoring
 Japanese documentation below; English README to follow.

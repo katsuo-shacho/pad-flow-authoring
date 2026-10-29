@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.0 — 2026-10-29
+- knowledge: patterns-browser-fetch.md（現行の取得定石: ページ内 fetch → base64 → PowerShell 保存、window 台帳、JSON 受け渡し、実時間の待ち、状態判定、最終照合）と silent-kills.md（無言拒否・貼付失敗の実例と検査手順）を新設。patterns-download-pipeline.md を「旧方式」と明記。SKILL.md に書くときの決まり2行。
+
 ## 0.1.2 — 2026-10-29
 - .github/workflows/release.yml: main への push で CHANGELOG の版を読み、未公開ならタグ・Release・portable zip を自動作成（releases/latest/download の固定 URL）。
 - scripts/make_portable.py: OneDrive／ローカルに置いて辞書的に参照するポータブル版 zip（START_HERE.md 入り）。README の導入表に追加。
